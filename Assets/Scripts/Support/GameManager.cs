@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Component Reference")]
     [SerializeField] public GameObject confetti;
-    [SerializeField] public List<MonoBehaviour> objectsToDisable;
+    [SerializeField] public List<MonoBehaviour> gameObjects;
 
     [Header("Game Attributes")]
     [SerializeField] private int currentScore;
@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
         currentLevel = PlayerPrefs.GetInt("level", 1);       
         UIManager.Instance.UpdateLevel(currentLevel);
         currentState = GameState.Main;
+        foreach (MonoBehaviour m in gameObjects)
+        {
+            m.enabled = false;
+        }
     }
 
     #endregion
@@ -45,6 +49,10 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.SwitchUIPanel(UIPanelState.Gameplay);       
         currentState = GameState.InGame;
+        foreach(MonoBehaviour m in gameObjects)
+        {
+            m.enabled = true;
+        }
     }
  
 
@@ -59,8 +67,8 @@ public class GameManager : MonoBehaviour
 
             PlayerPrefs.SetInt("level", currentLevel + 1);
             currentLevel++;
-
-            foreach(MonoBehaviour m in objectsToDisable)
+            confetti.SetActive(true);
+            foreach(MonoBehaviour m in gameObjects)
             {
                 m.enabled = false;
             }
@@ -73,7 +81,7 @@ public class GameManager : MonoBehaviour
         {
             Invoke("ShowLoseUI", 2f);
             currentState = GameState.Lose;
-            foreach (MonoBehaviour m in objectsToDisable)
+            foreach (MonoBehaviour m in gameObjects)
             {
                 m.enabled = false;
             }

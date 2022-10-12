@@ -5,8 +5,8 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [Header("Component References")]
-    [SerializeField] GameObject waterDrop;
-    [SerializeField] Transform dropsParent;
+    [SerializeField] GameObject character;
+    [SerializeField] Transform spawnPos;
 
 
     [Header("Attributes")]
@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < number; i++)
             {
-                Spawn(new Vector3(Random.Range(transform.position.x - randomRadius, transform.position.x + randomRadius), Random.Range(transform.position.y - randomRadius, transform.position.y + randomRadius), 0));
+                Spawn(spawnPos.position);
             }
 
             yield return new WaitForSeconds(interval);
@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn(Vector3 pos)
     {
-        GameObject g= Instantiate(waterDrop, pos, Quaternion.identity);
+        GameObject g= Instantiate(character, pos, Quaternion.identity);
         currentDrops++;
     }
 }

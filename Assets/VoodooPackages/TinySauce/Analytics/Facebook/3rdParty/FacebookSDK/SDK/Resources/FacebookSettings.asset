@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   clientTokens:
-  - 
+  - 488698673302294
   appIds:
-  - 0
+  - 488698673302294
   appLabels:
-  - App Name
+  - Push em up
   cookie: 1
   logging: 1
   status: 1

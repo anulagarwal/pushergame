@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] bool canMove;
     [SerializeField] Vector3 moveVector;
+    [SerializeField] public CharacterType type;
+    
     // Start is called before the first frame update
     void Start()
     {

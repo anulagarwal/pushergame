@@ -14,11 +14,13 @@ public class EnemyBase : MonoBehaviour
     private void OnDisable()
     {
         tm.text = "";
+        GetComponent<Spawner>().enabled = false;
 
     }
     private void OnEnable()
     {
         tm.text = "" + health;
+        GetComponent<Spawner>().enabled = true;
 
     }
     // Start is called before the first frame update

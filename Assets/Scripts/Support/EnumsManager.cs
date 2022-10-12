@@ -33,10 +33,9 @@ public enum Sound
     Lose
 }
 
-public enum TileState
+public enum CharacterType
 {
 
-    New,
-    Wall,
-    Cat
+    Player,
+    Enemy
 }
